@@ -1,0 +1,58 @@
+org: alienaz
+app: product-management
+service: product-management
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
+
+functions:
+  createProduct:
+    handler: src/presentation/handle_create_product.handleCreateProduct
+    timeout: 15
+    events:
+      - http:
+          path: products/create
+          method: post
+
+  editProduct:
+    handler: src/presentation/handle_update_product.handleEditProductById
+    timeout: 15
+    events:
+      - http:
+          path: products/edit/
+          method: put
+
+  searchProducts:
+    handler: src/presentation/handle_search_product.handleSearchProducts
+    timeout: 15
+    events:
+      - http:
+          path: products/search
+          method: post
+
+  getAllProducts:
+    handler: src/presentation/handle_get_product.handleGetAllProducts
+    timeout: 15
+    events:
+      - http:
+          path: products/get
+          method: get
+
+  deleteProduct:
+    handler: src/presentation/handle_delete_product.handleDeleteProduct
+    timeout: 15
+    events:
+      - http:
+          path: products/delete
+          method: delete
+          request:
+            parameters:
+              paths:
+                id: true
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
