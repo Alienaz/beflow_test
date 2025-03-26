@@ -4,7 +4,7 @@
 
 Este proyecto es una aplicación backend construida con el **Framework Serverless**, **AWS Lambda** y **MongoDB** (a través de Mongoose). 
 El propósito de la aplicación es gestionar productos mediante servicios como la creación, actualización, eliminación, búsqueda y obtención de productos. 
-La API se expone a través de AWS Lambda y se puede probar localmente utilizando **Serverless Offline**.
+La API se expone  mediante api gateway y aws lambda, se puede probar localmente utilizando **Serverless Offline**.
 
 La aplicación utiliza **MongoDB Atlas** como base de datos en la nube para almacenar los productos.
 
